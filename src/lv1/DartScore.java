@@ -7,8 +7,17 @@ public class DartScore {
         String dartResult1 = "1S2D*3T";
         String dartResult2 = "1D2S#10S";
         String dartResult3 = "1D2S0T";
+        String str = "a  b   c     d";
+        String[] str1 = str.split(" ");
+        List<String> str3 = new ArrayList<>(Arrays.asList(str1));
+        System.out.println(str3);
+
+        for (String str2: str3){
+            System.out.println(str2);
+        }
+
         Solution solution = new Solution();
-        System.out.println("result :"+solution.solution(dartResult2));
+        System.out.println("result :"+solution.solution(dartResult1));
     }
 }
 
@@ -57,8 +66,8 @@ class Solution {
             char[] temp_bonus = results.get(i).toCharArray();
 
             if(temp_bonus[0] == 'S') result_score.add(scores.get(i));
-            if(temp_bonus[0] == 'D') result_score.add(db(scores.get(i)));
-            if(temp_bonus[0] == 'T') result_score.add(tp(scores.get(i)));
+            else if(temp_bonus[0] == 'D') result_score.add(db(scores.get(i)));
+            else if(temp_bonus[0] == 'T') result_score.add(tp(scores.get(i)));
 
             if(temp_bonus.length==2){
                 if(temp_bonus[1] =='#'){
@@ -67,13 +76,15 @@ class Solution {
                     if(i==0){
                         result_score.set(i,result_score.get(i)*2);
                     }else{
-                        result_score.set(i-1,result_score.get(i)*2);
+                        result_score.set(i-1,result_score.get(i-1)*2);
                         result_score.set(i,result_score.get(i)*2);
                     }
                 }
             }
         }
+        System.out.println("=====================");
         for(int score : result_score){
+            System.out.println(score);
             answer += score;
         }
 
