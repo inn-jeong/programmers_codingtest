@@ -3,7 +3,7 @@ package lv2;
 public class Pibonachi {
     public static void main(String[] args) {
         int n1 = 3;
-        int n2 = 2;
+        int n2 = 11;
         Solution5 solution = new Solution5();
         System.out.println("answer: "+solution.solution(n2));
     }
@@ -16,12 +16,12 @@ class Solution5{
         int temp1 = 0;
         int temp2 = 1;
         while(cnt<n){
-            answer = temp1+temp2;
+            answer = (temp1+temp2)%1234567;
             temp1 = temp2;
             temp2 = answer;
             cnt++;
         }
-        return answer%1234567;
+        return answer;
     }
 
     int pibonachi(int n){
